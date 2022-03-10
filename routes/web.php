@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\RoomController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\RoomTypeController;
 
@@ -31,4 +32,15 @@ Route::prefix('admin')->group(function () {
     Route::get('/roomType/edit/{id}', [RoomTypeController::class, 'edit'])->name('roomtype.edit');
     Route::put('/roomType/update/{id}', [RoomTypeController::class, 'update'])->name('roomtype.update');
     Route::delete('/roomType/destroy/{id}', [RoomTypeController::class, 'destroy'])->name('roomtype.destroy');
+});
+
+//  ----------------------------------- Room Route -------------------
+Route::prefix('admin')->group(function () {
+    Route::get('/room', [RoomController::class, 'index'])->name('room.index');
+    Route::get('/room/create', [RoomController::class, 'create'])->name('room.create');
+    Route::post('/room/store', [RoomController::class, 'store'])->name('room.store');
+    Route::get('/room/show/{id}', [RoomController::class, 'show'])->name('room.show');
+    Route::get('/room/edit/{id}', [RoomController::class, 'edit'])->name('room.edit');
+    Route::put('/room/update/{id}', [RoomController::class, 'update'])->name('room.update');
+    Route::delete('/room/destroy/{id}', [RoomController::class, 'destroy'])->name('room.destroy');
 });
